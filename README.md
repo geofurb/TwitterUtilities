@@ -1,5 +1,5 @@
 # TwitterUtilities
-Automate data collection, tweet deletion, etc.
+Python3 utility to automate data collection, tweet deletion, etc.
 
 ## Setup:
 Clone the repo; use pip to pick up rauth, pytz, ujson.
