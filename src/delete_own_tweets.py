@@ -16,7 +16,7 @@ DELETE_FROM_FULL_ARCHIVE = True
 
 # This should be a <username>.taj file if DELETE_FROM_ARCHIVE is False
 # This should be a twitter-YYYY-MM-DD-*.zip file if DELETE_FROM_ARCHIVE is True
-#tweets_file = 'data/users/backhack_detect.taj'
+#tweets_file = 'data/users/<your username>.taj'
 tweets_file = 'data/users/twitter-2018-10-04-a19adcfdf74fe163c55ee32e22efdef6332e4f86c5ad9a232ffb8e4b65d930fd.zip'
 
 # Set the newest tweet you want to delete (higher is newer)
