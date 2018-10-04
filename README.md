@@ -1,6 +1,9 @@
 # TwitterUtilities
 Automate data collection, tweet deletion, etc.
 
+## Setup:
+Clone the repo; use pip to pick up rauth, pytz, ujson.
+
 ## Getting started:
 Go to `https://developer.twitter.com/en/apps` and create an app. Generate secrets and populate `src/secrets.json` with your new API keys. Make sure your app has write permission if you want to delete tweets! (Default permissions actually include write permissions because Twitter is ridiculous.)
 
