@@ -5,7 +5,7 @@ Created on Oct 21, 2015
 '''
 from datetime import datetime
 import pytz
-import json
+import ujson as json
 
 tweet_format = 'twitter'
 
