@@ -121,7 +121,7 @@ with getSession() as sess, open(f'data/{OUTPUT}', 'a+') as fout:
                 data = resp.json()
                 blocked_friends = len(blocked_users.intersection(data['ids']))  # Count the number of their friends that you've blocked
                 fout.write(f'{user[0]}\t{user[1]}\t{blocked_friends}\t{user[3]}\t{user[4]}\t{user[2]}\n')
-                if blocked_friends > -1:
+                if blocked_friends > 0:
                     print(f'{user[0]:<23}\t{user[1]:15}\t\t{blocked_friends}\t\t\t\t\t{user[3]:<10}\t{user[4]:<10}\t{user[2]}')
                 fout.flush()                                        # Save progress after each user
                 time.sleep(max(0.0, 60.0 + t_begin - time.time()))  # Sleep to avoid rate-limit
