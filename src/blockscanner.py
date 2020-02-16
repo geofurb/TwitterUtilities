@@ -106,8 +106,10 @@ with getSession() as sess, open(f'data/{OUTPUT}', 'a+') as fout:
         print(f'Resuming with @{users[0][1]}...')
     else:
         fout.write('ID\tUSERNAME\tBLOCKED FRIENDS\tFRIENDS\tFOLLOWERS\tVERIFIED\n')
-    print('ID\t\t\t\t\t\tUSERNAME\t\tBLOCKED FRIENDS\t\tFRIENDS\t\tFOLLOWERS\tVERIFIED')
+    print('ID\t\t\t\t\t\tUSERNAME\t\t\tBLOCKED FRIENDS\t\tFRIENDS\t\tFOLLOWERS\tVERIFIED')
     for user in users:
+        if SKIP_VERIFIED and user[2]:
+            continue
         for attempt in range(3):
             try:
                 t_begin = time.time()
@@ -116,7 +118,7 @@ with getSession() as sess, open(f'data/{OUTPUT}', 'a+') as fout:
                 blocked_friends = len(blocked_users.intersection(data['ids']))  # Count the number of their friends that you've blocked
                 fout.write(f'{user[0]}\t{user[1]}\t{blocked_friends}\t{user[3]}\t{user[4]}\t{user[2]}\n')
                 if blocked_friends > -1:
-                    print(f'{user[0]:<23}\t{user[1]:15}\t{blocked_friends}\t\t\t\t\t{user[3]}\t\t\t{user[4]}\t\t\t{user[2]}')
+                    print(f'{user[0]:<23}\t{user[1]:15}\t\t{blocked_friends}\t\t\t\t\t{user[3]}\t\t\t{user[4]}\t\t\t{user[2]}')
                 fout.flush()                                        # Save progress after each user
                 time.sleep(max(0.0, 60.0 + t_begin - time.time()))  # Sleep to avoid rate-limit
                 break
