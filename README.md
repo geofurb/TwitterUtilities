@@ -21,4 +21,4 @@ Either collect your tweets using `src/acquire_user_tweets.py` or by downloading 
 4) Add fun features for generating pattern-of-life plots and the like
 
 ## Gratitude:
-If you like this software, say nice things about me to people you know. If I wrote software you like, it makes me a good person, right?
+If you like this software, say nice things about me to people you know. If I wrote software you like; that makes me a good person, right?
