@@ -12,12 +12,16 @@ SKIP_VERIFIED = True
 OUTPUT = 'blockscan_results.txt'
 
 last_id = None
+title_line = False
 try:
     with open(f'data/{OUTPUT}') as fin:
         for line in fin:
             line = line.strip()
-            if line and line[0:2] != 'ID':
-                last_id = int(line.split('\t')[0])
+            if line:
+                if line[0:2] == 'ID':
+                    title_line = True
+                else:
+                    last_id = int(line.split('\t')[0])
 except FileNotFoundError:
     print('Output file not found. Creating: data/'+OUTPUT)
     with open(f'data/{OUTPUT}', 'w+') as fout:
@@ -104,7 +108,7 @@ with getSession() as sess, open(f'data/{OUTPUT}', 'a+') as fout:
     if last_id is not None:
         users = users[([x[0] for x in users]).index(last_id)+1:]
         print(f'Resuming with @{users[0][1]}...')
-    else:
+    if not title_line:
         fout.write('ID\tUSERNAME\tBLOCKED FRIENDS\tFRIENDS\tFOLLOWERS\tVERIFIED\n')
     print('ID\t\t\t\t\t\tUSERNAME\t\t\tBLOCKED FRIENDS\t\tFRIENDS\t\tFOLLOWERS\tVERIFIED')
     for user in users:
@@ -118,7 +122,7 @@ with getSession() as sess, open(f'data/{OUTPUT}', 'a+') as fout:
                 blocked_friends = len(blocked_users.intersection(data['ids']))  # Count the number of their friends that you've blocked
                 fout.write(f'{user[0]}\t{user[1]}\t{blocked_friends}\t{user[3]}\t{user[4]}\t{user[2]}\n')
                 if blocked_friends > -1:
-                    print(f'{user[0]:<23}\t{user[1]:15}\t\t{blocked_friends}\t\t\t\t\t{user[3]}\t\t\t{user[4]}\t\t\t{user[2]}')
+                    print(f'{user[0]:<23}\t{user[1]:15}\t\t{blocked_friends}\t\t\t\t\t{user[3]:<10}\t{user[4]:<10}\t{user[2]}')
                 fout.flush()                                        # Save progress after each user
                 time.sleep(max(0.0, 60.0 + t_begin - time.time()))  # Sleep to avoid rate-limit
                 break
