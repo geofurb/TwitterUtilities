@@ -110,7 +110,7 @@ with getSession() as sess, open(f'data/{OUTPUT}', 'a+') as fout:
         print(f'Resuming with @{users[0][1]}...')
     if not title_line:
         fout.write('ID\tUSERNAME\tBLOCKED FRIENDS\tFRIENDS\tFOLLOWERS\tVERIFIED\n')
-    print('ID\t\t\t\t\t\tUSERNAME\t\t\tBLOCKED FRIENDS\t\tFRIENDS\t\tFOLLOWERS\tVERIFIED')
+    print('\n\nID\t\t\t\t\t\tUSERNAME\t\t\tBLOCKED FRIENDS\t\tFRIENDS\t\tFOLLOWERS\tVERIFIED')
     for user in users:
         if SKIP_VERIFIED and user[2]:
             continue
@@ -135,7 +135,7 @@ with getSession() as sess, open(f'data/{OUTPUT}', 'a+') as fout:
                     print()
                     continue
                 if user[5]: # If the account is protected
-                    print(f'User {user[0]} (@{user[1]}) has a protected account which you do not follow. Unable to see their friends.')
+                    print(f'User {user[0]} (@{user[1]}) is a protected account which you do not follow. Unable to see their friends.')
                     break
                 if attempt == 2:
                     print(f'There was a problem getting the first 5000 followers for {user[0]} (@{user[1]}). Skipping them.')
