@@ -1,6 +1,8 @@
 # TwitterUtilities
 Python3 utility to automate data collection, tweet deletion, etc.
 
+Probably less useful now that Twitter is moving to a paid API, but it's your money.
+
 ## Setup:
 Clone the repo; use pip to pick up rauth, pytz, ujson.
 
@@ -15,10 +17,9 @@ Either collect your tweets using `src/acquire_user_tweets.py` or by downloading 
 
 
 ## TODO:
-1) Allow users to authorize my app to delete their tweets, rather than creating their own app. (This involves me sharing my app's oauth key publicly, so I'm not super fond of that. No way around it, though.)
-2) Wrap this into a command-line utility so people don't have to go editing the code
-3) Add a requirements.txt file 
-4) Add fun features for generating pattern-of-life plots and the like
+1) Wrap this into a command-line utility so people don't have to go editing the code
+2) Add a requirements.txt file 
+3) Add fun features for generating pattern-of-life plots and the like
 
 ## Gratitude:
-If you like this software, say nice things about me to people you know. If I wrote software you like; that makes me a good person, right?
+If you like this software, say nice things about me to people you know. If I wrote software you like, that makes me a good person, right?
